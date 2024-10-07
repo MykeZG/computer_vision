@@ -1,7 +1,7 @@
 // Classifier Variable
 let classifier; // clasificador de imagenes, crea la variable sin iniciarla
 // Model URL
-let imageModelURL = "https://teachablemachine.withgoogle.com/models/BJ_CVnw-H/"; // se crea la variable para el url
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/sWjmPIWxN/"; // se crea la variable para el url
 
 // Video
 let video; // variable para el video
@@ -43,17 +43,29 @@ function draw() {
 
   textSize(12);
   textAlign(CENTER);
-  text((confianza = (confianza * 100).toFixed(0)), width / 2, height - 80);
+  text(
+    (confianza = (confianza * 100).toFixed(0) + "&"),
+    width / 2,
+    height - 80
+  );
   fill(255);
 
   if (etiqueta == "Mentol" && confianza > 90) {
-    background(255, 255, 0, 50);
+    background(255, 255, 0, 70);
+    filter(GRAY);
+    fill(255);
+    text("ciego", width, height);
+    // fill(200);
   }
   if (etiqueta == "Tarjeta" && confianza > 90) {
     background(255, 0, 0, 50);
+    filter(BLUR);
+    // fill(50);
   }
   if (etiqueta == "Parlante" && confianza > 90) {
     background(0, 0, 255, 50);
+    filter(INVERT);
+    // fill(100);
   }
 }
 
